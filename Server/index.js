@@ -1,4 +1,6 @@
 const express = require('express');
+const app = express();
+
 const mongoose = require('mongoose');
 const incidentRoute = require('./Routes/incident');
 const userRoute = require('./Routes/user');
@@ -6,7 +8,6 @@ const cors = require('cors');
 
 const errorMiddleware = require('./middlewares/error');
 
-const app = express();
 
 const { MONGODB_URI = 'mongodb://localhost:27017/IncidentDB' } = process.env;
 mongoose.connect(MONGODB_URI, {

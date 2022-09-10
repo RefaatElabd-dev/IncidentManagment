@@ -7,7 +7,7 @@ const {
     getIncidentsByUserID, 
     getAll, 
     editOne, 
-    getByName
+    getById
 } = require('../controllers/incident');
 
 // add Incidant
@@ -49,9 +49,9 @@ router.get('/:name', auth, async (req, res, next) => {
 });
 
 // Update Incident
-router.patch('/edit/:name', auth, async (req, res, next) => {
-    const { body, user: { id } , params: { name }} = req;
-    const incident = await getByName(name);
+router.patch('/edit/:id', auth, async (req, res, next) => {
+    const { body, params: { id }} = req;
+    const incident = await getById(id);
     editOne(incident._id, { ...body } )
     .then(res.json)
     .catch(next);

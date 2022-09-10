@@ -7,7 +7,7 @@ const getAll = () => Incident.find({}).exec();
 const editOne = (id, body) =>
   Incident.findByIdAndUpdate(id, body, { new: true }).exec();
 
-const getByName = (name) => User.findOne({ name: name }).exec();
+const getById = (id) => Incident.find({ _id: id }).exec();
 
 const getIncidentsByUserID = (id) => Incident.find({ _id: id }).exec();
 
@@ -16,5 +16,5 @@ module.exports = {
   getIncidentsByUserID,
   getAll,
   editOne,
-  getByName,
+  getById,
 };
